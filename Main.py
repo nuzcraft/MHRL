@@ -1,5 +1,6 @@
 
 import libtcodpy as lib
+import Controls as controls
 import Classes.Object as obj
 import Public.Variables as pv
 
@@ -13,16 +14,15 @@ con = lib.console_new(pv.MAP_WIDTH, pv.MAP_HEIGHT)
 lib.console_set_default_background(con, lib.black)
 
 # create the player object
-player = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, pv.player_north_char, 'player', lib.white)
+player = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.white, 'east')
 
-player2 = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, '@', 'player', lib.blue)
+player2 = obj.Object(pv.SCREEN_WIDTH / 2 + 5, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.blue, 'west')
+
+gamestate = 'hunting' # used to indicate when on a hunt
 
 while not lib.console_is_window_closed():
 
-    key = lib.Key()
-    mouse = lib.Mouse()
-
-    lib.sys_check_for_event(lib.EVENT_KEY_PRESS | lib.EVENT_MOUSE, key, mouse)
+    lib.sys_check_for_event(lib.EVENT_KEY_PRESS | lib.EVENT_MOUSE, pv.key, pv.mouse)
 
     player.draw(con)
     player2.draw(con)
@@ -30,5 +30,9 @@ while not lib.console_is_window_closed():
     lib.console_blit(con, 0, 0, pv.MAP_WIDTH, pv.MAP_HEIGHT, 0, 0, 0)
     lib.console_flush()
 
-    if key.vk == lib.KEY_ESCAPE:
+    player.clear(con)
+
+    player_action = controls.handle_keys(pv.key, pv.mouse, gamestate, player)
+
+    if player_action == 'exit game':
         break

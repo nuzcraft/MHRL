@@ -23,14 +23,24 @@ Version = '0.1'
 
 # Player Variables
 #Characters -- Must be Square, with an odd number on each side
-player_north_char = ['  ' + chr(30) + '  '
-                   , '  ' + chr(186) + '  '
-                   , '  @  '
-                   , '     '
-                   , '     ']
-
-player_south_char = ['     '
-                   , '     '
-                   , '  @  '
-                   , '  ' + chr(186) + '  '
-                   , '  ' + chr(31) + '  ']                   
+player_greatsword_char = {
+'north': ['  ' + chr(30) + '  '
+        , '  ' + chr(186) + '  '
+        , '  @  '
+        , '     '
+        , '     ']
+, 'south': ['     '
+          , '     '
+          , '  @  '
+          , '  ' + chr(186) + '  '
+          , '  ' + chr(31) + '  ']
+, 'east': ['     '
+         , '     '
+         , '  @' + chr(205) + chr(16)
+         , '     '
+         , '     ']
+, 'west': ['     '
+         , '     '
+         , chr(17) + chr(205) + '@  '
+         , '     '
+         , '     ']}               

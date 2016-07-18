@@ -13,9 +13,9 @@ con = lib.console_new(pv.MAP_WIDTH, pv.MAP_HEIGHT)
 lib.console_set_default_background(con, lib.black)
 
 # create the player object
-player = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, pv.player_north_char, 'player', lib.white)
+player = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.white, 'east')
 
-player2 = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, '@', 'player', lib.blue)
+player2 = obj.Object(pv.SCREEN_WIDTH / 2 + 5, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.blue, 'west')
 
 while not lib.console_is_window_closed():
 

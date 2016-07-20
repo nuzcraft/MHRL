@@ -11,7 +11,7 @@ lib.sys_set_fps(pv.LIMIT_FPS)
 
 # create a new console
 con = lib.console_new(pv.MAP_WIDTH, pv.MAP_HEIGHT)
-lib.console_set_default_background(con, lib.black)
+lib.console_set_default_background(con, lib.dark_sepia)
 
 # create the player object
 player = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.white, 'east')
@@ -24,10 +24,12 @@ while not lib.console_is_window_closed():
 
     lib.sys_check_for_event(lib.EVENT_KEY_PRESS | lib.EVENT_MOUSE, pv.key, pv.mouse)
 
+    lib.console_rect(con, 0, 0, pv.MAP_WIDTH, pv.MAP_HEIGHT, False, lib.BKGND_SET)
+
     player.draw(con)
     player2.draw(con)
 
-    lib.console_blit(con, 0, 0, pv.MAP_WIDTH, pv.MAP_HEIGHT, 0, 0, 0)
+    lib.console_blit(con, 0, 0, pv.MAP_WIDTH, pv.MAP_HEIGHT, 0, 0, pv.MAP_Y)
     lib.console_flush()
 
     player.clear(con)

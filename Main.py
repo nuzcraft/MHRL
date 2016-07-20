@@ -11,7 +11,8 @@ lib.sys_set_fps(pv.LIMIT_FPS)
 
 # create a new console
 con = lib.console_new(pv.MAP_WIDTH, pv.MAP_HEIGHT)
-lib.console_set_default_background(con, lib.black)
+lib.console_set_default_background(con, lib.white)
+lib.console_set_default_background(0, lib.white)
 
 # create the player object
 player = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.white, 'east')

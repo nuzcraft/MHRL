@@ -14,6 +14,8 @@ solid_d_arrow = chr(31)
 dbl_pipes_vert = chr(186)
 dbl_pipes_horiz = chr(205)
 
+centered_dot = chr(249)
+
 # Size of the Window
 SCREEN_WIDTH = 140      
 SCREEN_HEIGHT = 80
@@ -85,4 +87,15 @@ red = {0: lib.darkest_red
 , 3: lib.red
 , 4: lib.light_red
 , 5: lib.lighter_red
-, 6: lib.lightest_red}                    
+, 6: lib.lightest_red}
+
+brown = {
+0: lib.Color(26, 20, 13)
+, 1: lib.Color(51, 41, 26)
+, 2: lib.Color(77, 61, 38)
+, 3: lib.Color(102, 82, 51)
+, 4: lib.Color(128, 102, 64)
+, 5: lib.Color(158, 134, 100)   
+, 6: lib.Color(191, 171, 149)
+, 7: lib.Color(222, 211, 195)      
+}                    

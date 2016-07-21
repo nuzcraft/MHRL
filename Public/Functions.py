@@ -14,12 +14,19 @@ def get_center(length, width):
 # renders the backgrounds cons
 def render_backgrounds():
     # main con
-    lib.console_set_default_background(pv.main_con, pv.red[0])
+    lib.console_set_default_background(pv.main_con, pv.brown[0])
     lib.console_rect(pv.main_con, 0, 0, pv.MAIN_CON_WIDTH, pv.MAIN_CON_HEIGHT, False, lib.BKGND_SET)
+    # outer walls
     for x in range(3, pv.MAIN_CON_WIDTH - 3):
-        lib.console_put_char_ex(pv.main_con, x, pv.MAIN_CON_HEIGHT - 1, pv.dbl_pipes_horiz, lib.green, lib.BKGND_SET)
-        lib.console_put_char_ex(pv.main_con, x, 0, pv.dbl_pipes_horiz, lib.green, lib.BKGND_SET)
-    # lib.console_put_char_ex(pv.main_con, 5, 0, pv.dbl_pipes_horiz, lib.blue, lib.BKGND_SET)
+        lib.console_put_char_ex(pv.main_con, x, pv.MAIN_CON_HEIGHT - 1, pv.dbl_pipes_horiz, pv.brown[3], lib.BKGND_SET)
+        lib.console_put_char_ex(pv.main_con, x, 0, pv.dbl_pipes_horiz, pv.brown[3], lib.BKGND_SET)
+    for y in range(3, pv.MAIN_CON_HEIGHT - 3):
+        lib.console_put_char_ex(pv.main_con, 0, y, pv.dbl_pipes_vert, pv.brown[3], lib.BKGND_SET)
+        lib.console_put_char_ex(pv.main_con, pv.MAIN_CON_WIDTH - 1, y, pv.dbl_pipes_vert, pv.brown[3], lib.BKGND_SET)
+    # corners    
+    for x in (0, pv.MAIN_CON_WIDTH - 1):
+        for y in (0, pv.MAIN_CON_HEIGHT - 1):
+            lib.console_put_char_ex(pv.main_con, x, y, pv.centered_dot, pv.brown[3], lib.BKGND_SET)    
     # status con
     lib.console_set_default_background(pv.status_con, lib.sepia)
     lib.console_rect(pv.status_con, 0, 0, pv.STATUS_CON_WIDTH, pv.STATUS_CON_HEIGHT, False, lib.BKGND_SET)

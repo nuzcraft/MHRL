@@ -13,6 +13,16 @@ solid_d_arrow = chr(31)
 
 dbl_pipes_vert = chr(186)
 dbl_pipes_horiz = chr(205)
+dbl_pipes_corner_tr = chr(187)
+dbl_pipes_corner_br = chr(188)
+dbl_pipes_corner_tl = chr(201)
+dbl_pipes_corner_bl = chr(200)
+dbl_pipes_T_r = chr(204)
+dbl_pipes_T_d = chr(203)
+dbl_pipes_T_u = chr(202)
+dbl_pipes_T_l = chr(185)
+dbl_pipes_X = chr(206)
+
 
 centered_dot = chr(249)
 

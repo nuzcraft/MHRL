@@ -57,7 +57,7 @@ map_con = lib.console_new(MAP_CON_WIDTH, MAP_CON_HEIGHT)
 menu_con = lib.console_new(MENU_CON_WIDTH, MENU_CON_HEIGHT)
 
 # FPS Limit
-LIMIT_FPS = 60
+LIMIT_FPS = 20
 
 # Current Version
 Version = 'a:0.1'

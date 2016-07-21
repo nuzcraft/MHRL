@@ -17,11 +17,13 @@ player2 = obj.Object(pv.SCREEN_WIDTH / 2 + 5, pv.SCREEN_HEIGHT / 2, pv.player_gr
 
 gamestate = 'hunting' # used to indicate when on a hunt
 
+framecount = 0
+
 while not lib.console_is_window_closed():
 
     lib.sys_check_for_event(lib.EVENT_KEY_PRESS | lib.EVENT_MOUSE, pv.key, pv.mouse)
 
-    pf.render_backgrounds()
+    pf.render_backgrounds(framecount)
 
     player.draw(pv.main_con)
     player2.draw(pv.main_con)
@@ -35,6 +37,11 @@ while not lib.console_is_window_closed():
     player.clear(pv.main_con)
 
     player_action = controls.handle_keys(pv.key, pv.mouse, gamestate, player)
+
+    framecount += 1
+    print framecount
+    if framecount == 1000:
+        framecount = 0
 
     if player_action == 'exit game':
         break

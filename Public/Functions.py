@@ -12,7 +12,7 @@ def get_center(length, width):
     return (int(x_center), int(y_center))
 
 # renders the backgrounds cons and basic border
-def render_backgrounds():
+def render_backgrounds(framecount):
     for (con, con_height, con_width) in [(pv.main_con, pv.MAIN_CON_HEIGHT, pv.MAIN_CON_WIDTH)
     , (pv.status_con, pv.STATUS_CON_HEIGHT, pv.STATUS_CON_WIDTH)
     , (pv.map_con, pv.MAP_CON_HEIGHT, pv.MAP_CON_WIDTH)
@@ -65,3 +65,8 @@ def render_backgrounds():
         lib.console_put_char(con, con_width - 3, con_height - 2, pv.dbl_pipes_corner_tl) 
         lib.console_put_char(con, con_width - 2, con_height - 3, pv.dbl_pipes_corner_tl)
         lib.console_put_char(con, con_width - 2, con_height - 2, pv.dbl_pipes_X)
+
+    # this section is for the climbing vines
+    lib.console_set_default_foreground(pv.main_con, lib.green)
+    for f in range(framecount):
+        lib.console_put_char(pv.main_con, 0, pv.MAIN_CON_HEIGHT - 1 - (f / 10), '|')       

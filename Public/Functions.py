@@ -8,11 +8,31 @@ import Public.Variables as pv
 # only works on odd by odd things, if even, it will skew down for width and right for length
 def get_center(length, width):
     x_center = round(length / 2)
-    y_center = round(width / 2)
+    y_center = round(width / 2) 
     return (int(x_center), int(y_center))
 
+# draw_char takes a character or set of characters and draws them to the specified console
+def draw_char(con_x, con_y, char, console, fore_color_complex = None, fore_color_simple = lib.white):
+    CHAR_HEIGHT = len(char)
+    print CHAR_HEIGHT
+    CHAR_WIDTH = len(char[0])
+    print CHAR_WIDTH
+    # get the center of the character(s) so we can draw in the right place   
+    for a in range(CHAR_HEIGHT):
+        for b in range(CHAR_WIDTH):
+            print a, b
+            print char[a][b]
+            print con_x + b, con_y + a
+            if char[a][b] != ' ':
+                if fore_color_complex != None:
+                    lib.console_set_default_foreground(console, fore_color_complex[(a, b)])
+                else: 
+                    lib.console_set_default_foreground(console, fore_color_simple)    
+                lib.console_put_char(console, con_x + b, con_y + a, char[a][b], lib.BKGND_NONE)
+   
+
 # renders the backgrounds cons and basic border
-def render_backgrounds(framecount):
+def render_backgrounds(borderframe):
     for (con, con_height, con_width) in [(pv.main_con, pv.MAIN_CON_HEIGHT, pv.MAIN_CON_WIDTH)
     , (pv.status_con, pv.STATUS_CON_HEIGHT, pv.STATUS_CON_WIDTH)
     , (pv.map_con, pv.MAP_CON_HEIGHT, pv.MAP_CON_WIDTH)
@@ -67,6 +87,10 @@ def render_backgrounds(framecount):
         lib.console_put_char(con, con_width - 2, con_height - 2, pv.dbl_pipes_X)
 
     # this section is for the climbing vines
-    lib.console_set_default_foreground(pv.main_con, lib.green)
-    for f in range(framecount):
-        lib.console_put_char(pv.main_con, 0, pv.MAIN_CON_HEIGHT - 1 - (f / 10), '|')       
+    if pv.MAIN_CON_HEIGHT - 1 - borderframe <= 50:
+        draw_char(0, 50, pv.border_flower_char, pv.main_con, pv.border_flower_fore_color)
+    for f in range(borderframe):
+        # lib.console_set_default_foreground(pv.main_con, lib.green)
+        # lib.console_put_char(pv.main_con, 0, pv.MAIN_CON_HEIGHT - 1 - (f / 10), pv.border_vine_l[pv.MAIN_CON_HEIGHT - 1 - (f / 10)])
+        draw_char(0, pv.MAIN_CON_HEIGHT - 1 - f, pv.border_vine_l[pv.MAIN_CON_HEIGHT - 1 - f], pv.main_con, fore_color_simple = lib.green)
+    

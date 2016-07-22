@@ -13,7 +13,7 @@ lib.sys_set_fps(pv.LIMIT_FPS)
 # create the player object
 player = obj.Object(pv.SCREEN_WIDTH / 2, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.white, 'east')
 
-player2 = obj.Object(pv.SCREEN_WIDTH / 2 + 5, pv.SCREEN_HEIGHT / 2, pv.player_greatsword_char, 'player', lib.blue, 'west')
+player2 = obj.Object(2, 4, pv.player_greatsword_char, 'player', lib.blue, 'west')
 
 gamestate = 'hunting' # used to indicate when on a hunt
 
@@ -22,8 +22,9 @@ framecount = 0
 while not lib.console_is_window_closed():
 
     lib.sys_check_for_event(lib.EVENT_KEY_PRESS | lib.EVENT_MOUSE, pv.key, pv.mouse)
-
-    pf.render_backgrounds(framecount)
+    
+    pf.render_backgrounds(int(framecount / 10))
+    pf.draw_char(2, 4, pv.variable, pv.main_con)
 
     player.draw(pv.main_con)
     player2.draw(pv.main_con)
@@ -39,7 +40,6 @@ while not lib.console_is_window_closed():
     player_action = controls.handle_keys(pv.key, pv.mouse, gamestate, player)
 
     framecount += 1
-    print framecount
     if framecount == 1000:
         framecount = 0
 

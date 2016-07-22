@@ -23,8 +23,9 @@ dbl_pipes_T_u = chr(202)
 dbl_pipes_T_l = chr(185)
 dbl_pipes_X = chr(206)
 
-
 centered_dot = chr(249)
+
+omega = chr(234)
 
 # Size of the Window
 SCREEN_WIDTH = 140      
@@ -91,7 +92,8 @@ player_greatsword_char = {
          , '     ']}    
 
 # Colors
-red = {0: lib.darkest_red
+red = {
+0: lib.darkest_red
 , 1: lib.darker_red
 , 2: lib.dark_red
 , 3: lib.red
@@ -108,4 +110,87 @@ brown = {
 , 5: lib.Color(158, 134, 100)   
 , 6: lib.Color(191, 171, 149)
 , 7: lib.Color(222, 211, 195)      
-}                    
+}
+
+variable = ['abcde'
+          , 'fghij'
+          , 'klmno']
+
+# Border vines and flowers
+# Flower
+border_flower_char = [centered_dot + solid_u_arrow + centered_dot
+                    , solid_l_arrow + omega + solid_r_arrow
+                    , centered_dot + solid_d_arrow + centered_dot]
+
+border_flower_fore_color = {(0, 0): lib.green, (0, 1): lib.pink, (0, 2): lib.green
+, (1, 0): lib.pink, (1, 1): lib.yellow, (1, 2): lib.pink
+, (2, 0): lib.green, (2, 1): lib.pink, (2, 2): lib.green}
+
+# Vine
+border_vine_l = [
+'/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|]'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|p'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|4'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|s'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|d'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|f'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|a'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|^'
+, '/'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|)'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|)'
+, ' /'
+, '/ '
+, '\|'
+, '|/'
+, '|)'
+, '|^'
+]

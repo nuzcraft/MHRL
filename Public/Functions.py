@@ -88,14 +88,24 @@ def render_backgrounds():
 def render_vines(framecountdiv10):
     # this section is for the climbing vines
     # the y_location moves up the con to simulate the climbing of the vine
-    y_location = pv.MAIN_CON_HEIGHT - 1 - framecountdiv10
+    y_location = pv.SCREEN_HEIGHT - 1 - framecountdiv10
+    main_y_location = y_location - pv.STATUS_CON_HEIGHT
     # draw the flowers
-    if y_location >= 0
+    if main_y_location >= 0:
+        # this writes to the main con
         main_con_flower_location = [3, 21, 49]
-        if y_location - 1 in main_con_flower_location:
-            draw_char(0, y_location - 1, pv.border_flowerbud_char, pv.main_con, fore_color_simple = lib.green)
-        if y_location in main_con_flower_location:
-            draw_char(0, y_location, pv.border_flower_char_l, pv.main_con, pv.border_flower_fore_color)
+        if main_y_location - 1 in main_con_flower_location:
+            draw_char(0, main_y_location - 1, pv.border_flowerbud_char, pv.main_con, fore_color_simple = lib.green)
+        if main_y_location in main_con_flower_location:
+            draw_char(0, main_y_location, pv.border_flower_char_l, pv.main_con, pv.border_flower_fore_color)
         # draw the vines    
-        draw_char(0, y_location, pv.border_vine_main_con_l[y_location], pv.main_con, fore_color_simple = lib.green, string = True)
-    
+        draw_char(0, main_y_location, pv.border_vine_main_con_l[main_y_location], pv.main_con, fore_color_simple = lib.green, string = True)
+    elif y_location >=0 :
+        # this writes to the status con
+        status_con_flower_location = [3]
+        if y_location - 1 in status_con_flower_location:
+            draw_char(0, y_location - 1, pv.border_flowerbud_char, pv.status_con, fore_color_simple = lib.green)
+        if y_location in status_con_flower_location:
+            draw_char(0, y_location, pv.border_flower_char_l, pv.status_con, pv.border_flower_fore_color)
+        # draw the vines    
+        draw_char(0, y_location, pv.border_vine_status_con_l[y_location], pv.status_con, fore_color_simple = lib.green, string = True)

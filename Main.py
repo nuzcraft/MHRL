@@ -45,7 +45,7 @@ while not lib.console_is_window_closed():
     player_action = controls.handle_keys(pv.key, pv.mouse, gamestate, player)
 
     framecount += 1
-    if framecount == 1000:
+    if framecount == 72000: # 1 hr @ 20 fps
         framecount = 0
         lib.console_clear(pv.main_con)
         pf.render_backgrounds()

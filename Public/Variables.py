@@ -24,6 +24,7 @@ dbl_pipes_T_l = chr(185)
 dbl_pipes_X = chr(206)
 
 centered_dot = chr(249)
+dbl_squiggly_equals = chr(247)
 
 omega = chr(234)
 
@@ -112,85 +113,104 @@ brown = {
 , 7: lib.Color(222, 211, 195)      
 }
 
-variable = ['abcde'
-          , 'fghij'
-          , 'klmno']
-
 # Border vines and flowers
 # Flower
-border_flower_char = [centered_dot + solid_u_arrow + centered_dot
+border_flower_char_l = [' ' + solid_u_arrow + centered_dot
                     , solid_l_arrow + omega + solid_r_arrow
-                    , centered_dot + solid_d_arrow + centered_dot]
+                    , ' ' + solid_d_arrow + centered_dot]
+
+border_flower_char_r = [centered_dot + solid_u_arrow + ' '
+                    , solid_l_arrow + omega + solid_r_arrow
+                    , centered_dot + solid_d_arrow + ' ']                    
 
 border_flower_fore_color = {(0, 0): lib.green, (0, 1): lib.pink, (0, 2): lib.green
 , (1, 0): lib.pink, (1, 1): lib.yellow, (1, 2): lib.pink
 , (2, 0): lib.green, (2, 1): lib.pink, (2, 2): lib.green}
 
+border_flowerbud_char = [' ' + centered_dot + ' '
+                       , centered_dot + omega + centered_dot
+                       , ' ' + centered_dot + ' ']                       
+
 # Vine
-border_vine_l = [
-'/'
+border_vine_main_con_l = [
+'  '
+, '  '
+, '  '
+, '  '
+, '  '
+, '/ '
+, '/ '
+, '/ '
+, '/ '
+, '/ '
+, '  '
+, ' \\'
+, ' /'
+, '  '
+, '\\' + dbl_squiggly_equals
+, '\\ '
+, '\\ '
+, '\\ '
+, '  '
+, '\\ '
+, '\\' + dbl_squiggly_equals
+, '\\ '
+, '  '
+, '/ '
+, '/ '
+, '/ '
+, '  '
+, ' \\'
 , ' /'
 , '/ '
-, '\|'
-, '|/'
-, '|]'
-, '/'
+, '  '
+, '/' + dbl_squiggly_equals
+, '/ '
+, '/ '
+, '/ '
+, '/ '
+, '/ '
+, '/ '
+, '  '
+, ' \\'
+, '//'
+, '/ '
+, '\\' + dbl_squiggly_equals
+, '\\ '
+, '\\ '
+, '\\ '
+, '  '
+, '\\ '
+, '\\ '
+, '\\ '
+, '  '
+, '/ '
+, '/ '
+, '/' + dbl_squiggly_equals
+, '  '
+, ' \\'
 , ' /'
 , '/ '
-, '\|'
-, '|/'
-, '|p'
-, '/'
-, ' /'
+, '  '
+, '/' + dbl_squiggly_equals
+, '/' + dbl_squiggly_equals
 , '/ '
-, '\|'
-, '|/'
-, '|4'
-, '/'
-, ' /'
+, '  '
+, '  '
+, '  '
+]
+
+border_vine_status_con_l = [
+'  '
+, '  '
+, '  '
+, '\\ '
+, '  '
 , '/ '
-, '\|'
-, '|/'
-, '|s'
-, '/'
-, ' /'
-, '/ '
-, '\|'
-, '|/'
-, '|d'
-, '/'
-, ' /'
-, '/ '
-, '\|'
-, '|/'
-, '|f'
-, '/'
-, ' /'
-, '/ '
-, '\|'
-, '|/'
-, '|a'
-, '/'
-, ' /'
-, '/ '
-, '\|'
-, '|/'
-, '|^'
-, '/'
-, ' /'
-, '/ '
-, '\|'
-, '|/'
-, '|)'
-, ' /'
-, '/ '
-, '\|'
-, '|/'
-, '|)'
-, ' /'
-, '/ '
-, '\|'
-, '|/'
-, '|)'
-, '|^'
+, '/' + dbl_squiggly_equals
+, '\\\\'
+, '//'
+, '\\ '
+, '\\\\'
+, '\\/'        
 ]

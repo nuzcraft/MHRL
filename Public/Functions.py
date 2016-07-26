@@ -93,19 +93,31 @@ def render_vines(framecountdiv10):
     # draw the flowers
     if main_y_location >= 0:
         # this writes to the main con
-        main_con_flower_location = [3, 21, 49]
-        if main_y_location - 1 in main_con_flower_location:
+        main_con_flower_l_location = [3, 21, 49]
+        main_con_flower_r_location = [13, 41, 59]
+        if main_y_location - 1 in main_con_flower_l_location:
             draw_char(0, main_y_location - 1, pv.border_flowerbud_char, pv.main_con, fore_color_simple = lib.green)
-        if main_y_location in main_con_flower_location:
+        if main_y_location in main_con_flower_l_location:
             draw_char(0, main_y_location, pv.border_flower_char_l, pv.main_con, pv.border_flower_fore_color)
+        if main_y_location - 1 in main_con_flower_r_location:
+            draw_char(pv.MAIN_CON_WIDTH - 3, main_y_location - 1, pv.border_flowerbud_char, pv.main_con, fore_color_simple = lib.green)
+        if main_y_location in main_con_flower_r_location:
+            draw_char(pv.MAIN_CON_WIDTH - 3, main_y_location, pv.border_flower_char_r, pv.main_con, pv.border_flower_fore_color)
         # draw the vines    
         draw_char(0, main_y_location, pv.border_vine_main_con_l[main_y_location], pv.main_con, fore_color_simple = lib.green, string = True)
+        draw_char(pv.MAIN_CON_WIDTH - 2, main_y_location, pv.border_vine_main_con_r[main_y_location], pv.main_con, fore_color_simple = lib.green, string = True)
     elif y_location >=0 :
         # this writes to the status con
-        status_con_flower_location = [3]
-        if y_location - 1 in status_con_flower_location:
+        status_con_flower_l_location = [3]
+        status_con_flower_r_location = [11]
+        if y_location - 1 in status_con_flower_l_location:
             draw_char(0, y_location - 1, pv.border_flowerbud_char, pv.status_con, fore_color_simple = lib.green)
-        if y_location in status_con_flower_location:
+        if y_location in status_con_flower_l_location:
             draw_char(0, y_location, pv.border_flower_char_l, pv.status_con, pv.border_flower_fore_color)
+        if y_location - 1 in status_con_flower_r_location:
+            draw_char(pv.STATUS_CON_WIDTH - 3, y_location - 1, pv.border_flowerbud_char, pv.status_con, fore_color_simple = lib.green)
+        if y_location in status_con_flower_r_location:
+            draw_char(pv.STATUS_CON_WIDTH - 3, y_location, pv.border_flower_char_r, pv.status_con, pv.border_flower_fore_color)
         # draw the vines    
         draw_char(0, y_location, pv.border_vine_status_con_l[y_location], pv.status_con, fore_color_simple = lib.green, string = True)
+        draw_char(pv.STATUS_CON_WIDTH - 2, y_location, pv.border_vine_status_con_r[y_location], pv.status_con, fore_color_simple = lib.green, string = True)

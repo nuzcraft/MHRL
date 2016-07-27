@@ -23,13 +23,8 @@ while not lib.console_is_window_closed():
 
     lib.sys_check_for_event(lib.EVENT_KEY_PRESS | lib.EVENT_MOUSE, pv.key, pv.mouse)
     
-    if framecount == 0:
-        # render the background first, then don't refresh it unless necesary'
-        pf.render_backgrounds()
-
-    if framecount % 10 == 0:
-        # every 10 frames, render the climbing vines
-        pf.render_vines(int(framecount / 10))
+    # render the background first, then don't refresh it unless necesary'
+    pf.render_backgrounds(framecount)
     
     player.draw(pv.main_con)
     player2.draw(pv.main_con)

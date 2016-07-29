@@ -28,7 +28,20 @@ def draw_char(con_x, con_y, char, console, fore_color_complex = None, fore_color
                     lib.console_put_char(console, con_x + b, con_y + a, char[a][b], lib.BKGND_NONE)
                 else:
                     lib.console_put_char(console, con_x + a, con_y + b, char[a][b], lib.BKGND_NONE)    
-   
+
+# clear_char works the same as draw_char, except it clears out the characters
+def clear_char(con_x, con_y, char, console, string = False):
+    CHAR_HEIGHT = len(char)
+    CHAR_WIDTH = len(char[0])
+    # get the center of the character(s) so we can draw in the right place   
+    for a in range(CHAR_HEIGHT):
+        for b in range(CHAR_WIDTH):
+            if char[a][b] != ' ':
+                # because of the way lists are handled vs strings, the second clause handles a string input    
+                if string == False:        
+                    lib.console_put_char(console, con_x + b, con_y + a, ' ', lib.BKGND_NONE)
+                else:
+                    lib.console_put_char(console, con_x + a, con_y + b, ' ', lib.BKGND_NONE)     
 
 # renders the backgrounds cons and basic border
 def render_backgrounds(framecount):
@@ -97,10 +110,17 @@ def render_vines(framecountdiv10):
     main_y_location = y_location - pv.STATUS_CON_HEIGHT
     menu_y_location = y_location - pv.MAP_CON_HEIGHT
     # draw the flowers
-    if main_y_location >= 0:
+    main_con_flower_l_location = [3, 21, 49]
+    main_con_flower_r_location = [13, 41, 59]
+    status_con_flower_l_location = [3]
+    status_con_flower_r_location = [11]
+    menu_con_flower_l_location = [11, 39]
+    menu_con_flower_r_location = [15, 33, 44]
+    map_con_flower_l_location = [8]
+    map_con_flower_r_location = [12]
+
+    if main_y_location >= 0 and y_location >= 0:
         # this writes to the main con
-        main_con_flower_l_location = [3, 21, 49]
-        main_con_flower_r_location = [13, 41, 59]
         if main_y_location - 1 in main_con_flower_l_location:
             draw_char(0, main_y_location - 1, pv.border_flowerbud_char, pv.main_con, fore_color_simple = lib.green)
         if main_y_location in main_con_flower_l_location:
@@ -114,8 +134,6 @@ def render_vines(framecountdiv10):
         draw_char(pv.MAIN_CON_WIDTH - 2, main_y_location, pv.border_vine_main_con_r[main_y_location], pv.main_con, fore_color_simple = lib.green, string = True)
     elif y_location >=0 :
         # this writes to the status con
-        status_con_flower_l_location = [3]
-        status_con_flower_r_location = [11]
         if y_location - 1 in status_con_flower_l_location:
             draw_char(0, y_location - 1, pv.border_flowerbud_char, pv.status_con, fore_color_simple = lib.green)
         if y_location in status_con_flower_l_location:
@@ -127,10 +145,8 @@ def render_vines(framecountdiv10):
         # draw the vines    
         draw_char(0, y_location, pv.border_vine_status_con_l[y_location], pv.status_con, fore_color_simple = lib.green, string = True)
         draw_char(pv.STATUS_CON_WIDTH - 2, y_location, pv.border_vine_status_con_r[y_location], pv.status_con, fore_color_simple = lib.green, string = True)
-    if menu_y_location >= 0:
+    if menu_y_location >= 0 and y_location >= 0:
         # this writes to the menu con
-        menu_con_flower_l_location = [11, 39]
-        menu_con_flower_r_location = [15, 33, 44]
         if menu_y_location - 1 in menu_con_flower_l_location:
             draw_char(0, menu_y_location - 1, pv.border_flowerbud_char, pv.menu_con, fore_color_simple = lib.green)
         if menu_y_location in menu_con_flower_l_location:
@@ -144,8 +160,6 @@ def render_vines(framecountdiv10):
         draw_char(pv.MENU_CON_WIDTH - 2, menu_y_location, pv.border_vine_menu_con_r[menu_y_location], pv.menu_con, fore_color_simple = lib.green, string = True)
     elif y_location >=0 :
         # this writes to the map con
-        map_con_flower_l_location = [8]
-        map_con_flower_r_location = [12]
         if y_location - 1 in map_con_flower_l_location:
             draw_char(0, y_location - 1, pv.border_flowerbud_char, pv.map_con, fore_color_simple = lib.green)
         if y_location in map_con_flower_l_location:
@@ -157,3 +171,14 @@ def render_vines(framecountdiv10):
         # draw the vines    
         draw_char(0, y_location, pv.border_vine_map_con_l[y_location], pv.map_con, fore_color_simple = lib.green, string = True)
         draw_char(pv.MAP_CON_WIDTH - 2, y_location, pv.border_vine_map_con_r[y_location], pv.map_con, fore_color_simple = lib.green, string = True)
+    if y_location < 0: # The vines have stopped growing
+        if framecountdiv10 % 2 == 0:
+            for location in main_con_flower_l_location:
+                clear_char(0, location, pv.border_flower_char_l, pv.main_con)
+                draw_char(0, location, pv.border_flowerbud_char, pv.main_con, fore_color_simple = lib.green)
+        else:
+            for location in main_con_flower_l_location:
+                clear_char(0, location, pv.border_flowerbud_char, pv.main_con)
+                draw_char(0, location, pv.border_flower_char_l, pv.main_con, pv.border_flower_fore_color)
+
+
